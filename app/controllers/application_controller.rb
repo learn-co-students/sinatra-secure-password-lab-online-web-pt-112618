@@ -17,8 +17,9 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/signup" do
-    #your code here
     user = User.new(username: params[:username], password: params[:password])
+
+    #user can save if username is empty. Need to make sure if it is not empty
     if user.save && !user.username.empty?
       redirect "/login"
     else
